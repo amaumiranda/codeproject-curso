@@ -29,7 +29,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        Client::create($request->all());
+        return Client::create($request->all());
     }
 
     /**
@@ -40,7 +40,8 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        Client::find($id);
+
+        return Client::find($id);
     }
 
     /**
@@ -52,7 +53,8 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Client::find($id)->update($request->all());
+        return Client::find($id);  
     }
 
     /**
@@ -63,6 +65,6 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        Client::find($id)->delete();
+        return Client::find($id)->delete();
     }
 }
